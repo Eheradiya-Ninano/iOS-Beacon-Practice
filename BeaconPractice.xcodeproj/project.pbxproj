@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F29184B41A81F5B0004FA613 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F29184B31A81F5B0004FA613 /* main.m */; };
-		F29184B71A81F5B0004FA613 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F29184B61A81F5B0004FA613 /* AppDelegate.m */; };
-		F29184BA1A81F5B0004FA613 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29184B91A81F5B0004FA613 /* ViewController.m */; };
 		F29184BD1A81F5B0004FA613 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29184BB1A81F5B0004FA613 /* Main.storyboard */; };
 		F29184BF1A81F5B1004FA613 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F29184BE1A81F5B1004FA613 /* Images.xcassets */; };
 		F29184C21A81F5B1004FA613 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29184C01A81F5B1004FA613 /* LaunchScreen.xib */; };
 		F29184CE1A81F5B1004FA613 /* BeaconPracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29184CD1A81F5B1004FA613 /* BeaconPracticeTests.m */; };
+		F29184DE1A81F90D004FA613 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29184D71A81F8D6004FA613 /* UIKit.framework */; };
+		F29184DF1A81F912004FA613 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29184D91A81F8DD004FA613 /* CoreLocation.framework */; };
+		F29184E01A81F91D004FA613 /* Reco.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29184DB1A81F8EC004FA613 /* Reco.framework */; };
+		F29184E21A81F959004FA613 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F29184B61A81F5B0004FA613 /* AppDelegate.m */; };
+		F29184E31A81F959004FA613 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29184B91A81F5B0004FA613 /* ViewController.m */; };
+		F29184E41A81F959004FA613 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F29184B31A81F5B0004FA613 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		F29184C71A81F5B1004FA613 /* BeaconPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeaconPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29184CC1A81F5B1004FA613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F29184CD1A81F5B1004FA613 /* BeaconPracticeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaconPracticeTests.m; sourceTree = "<group>"; };
+		F29184D71A81F8D6004FA613 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F29184D91A81F8DD004FA613 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F29184DB1A81F8EC004FA613 /* Reco.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reco.framework; path = ../../../../Downloads/reco_sdk_ios_v0.1.3/sdk/Reco.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29184E01A81F91D004FA613 /* Reco.framework in Frameworks */,
+				F29184DF1A81F912004FA613 /* CoreLocation.framework in Frameworks */,
+				F29184DE1A81F90D004FA613 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,7 @@
 		F29184A51A81F5B0004FA613 = {
 			isa = PBXGroup;
 			children = (
+				F29184DD1A81F8F9004FA613 /* Frameworks */,
 				F29184B01A81F5B0004FA613 /* BeaconPractice */,
 				F29184CA1A81F5B1004FA613 /* BeaconPracticeTests */,
 				F29184AF1A81F5B0004FA613 /* Products */,
@@ -81,10 +91,7 @@
 		F29184B01A81F5B0004FA613 /* BeaconPractice */ = {
 			isa = PBXGroup;
 			children = (
-				F29184B51A81F5B0004FA613 /* AppDelegate.h */,
-				F29184B61A81F5B0004FA613 /* AppDelegate.m */,
-				F29184B81A81F5B0004FA613 /* ViewController.h */,
-				F29184B91A81F5B0004FA613 /* ViewController.m */,
+				F29184E11A81F930004FA613 /* Src */,
 				F29184BB1A81F5B0004FA613 /* Main.storyboard */,
 				F29184BE1A81F5B1004FA613 /* Images.xcassets */,
 				F29184C01A81F5B1004FA613 /* LaunchScreen.xib */,
@@ -117,6 +124,27 @@
 				F29184CC1A81F5B1004FA613 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F29184DD1A81F8F9004FA613 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F29184DB1A81F8EC004FA613 /* Reco.framework */,
+				F29184D91A81F8DD004FA613 /* CoreLocation.framework */,
+				F29184D71A81F8D6004FA613 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F29184E11A81F930004FA613 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				F29184B51A81F5B0004FA613 /* AppDelegate.h */,
+				F29184B61A81F5B0004FA613 /* AppDelegate.m */,
+				F29184B81A81F5B0004FA613 /* ViewController.h */,
+				F29184B91A81F5B0004FA613 /* ViewController.m */,
+			);
+			name = Src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29184BA1A81F5B0004FA613 /* ViewController.m in Sources */,
-				F29184B71A81F5B0004FA613 /* AppDelegate.m in Sources */,
-				F29184B41A81F5B0004FA613 /* main.m in Sources */,
+				F29184E21A81F959004FA613 /* AppDelegate.m in Sources */,
+				F29184E31A81F959004FA613 /* ViewController.m in Sources */,
+				F29184E41A81F959004FA613 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +373,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/JeremyJeon/Downloads/reco_sdk_ios_v0.1.3/sdk,
+				);
 				INFOPLIST_FILE = BeaconPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,7 +388,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/JeremyJeon/Downloads/reco_sdk_ios_v0.1.3/sdk,
+				);
 				INFOPLIST_FILE = BeaconPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +452,7 @@
 				F29184D31A81F5B1004FA613 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F29184D41A81F5B1004FA613 /* Build configuration list for PBXNativeTarget "BeaconPracticeTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +461,7 @@
 				F29184D61A81F5B1004FA613 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

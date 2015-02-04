@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Reco/Reco.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, RECOBeaconManagerDelegate> {
+    
+    RECOBeaconManager *beaconManager;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

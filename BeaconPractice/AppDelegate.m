@@ -17,6 +17,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    beaconManager = [[RECOBeaconManager alloc] init];
+    [beaconManager setDelegate:self];
+    
+    NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];
+    RECOBeaconRegion *beaconReagion = [self getBeaconReginWithUUID:uuid andIdentifier:@"Jeremy"];
+    // RECOBeaconManager를 사용해 등록
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+    [beaconManager requestAlwaysAuthorization];
+#endif
+    
+    [beaconManager startMonitoringForRegion:beaconReagion];
+    [beaconManager startRangingBeaconsInRegion:beaconReagion];
+    
     return YES;
 }
 
@@ -40,6 +55,40 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (RECOBeaconRegion *)getBeaconReginWithUUID:(NSUUID *)proximityUUID
+                      andIdentifier:(NSString *)identifier {
+    
+    // Mornitoring을 위한 RECOBeaconRegion을 정의
+    RECOBeaconRegion *recoRegion = [[RECOBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:identifier];
+    [recoRegion setNotifyOnEntry:YES];
+    [recoRegion setNotifyOnExit:YES];
+    
+    return recoRegion;
+}
+
+#pragma mark -
+#pragma mark RECOBeaconManagerDelegate
+
+- (void)recoManager:(RECOBeaconManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    
+    NSLog(@"AppDelegate >> did change authorization status [status: %d", status);
+}
+
+- (void)recoManager:(RECOBeaconManager *)manager didEnterRegion:(RECOBeaconRegion *)region {
+    
+    NSLog(@"AppDelegate >> did enter region [manager: %@, region: %@]", manager, region);
+}
+
+- (void)recoManager:(RECOBeaconManager *)manager didExitRegion:(RECOBeaconRegion *)region {
+
+    NSLog(@"AppDelegate >> did exit region [manager: %@, region: %@]", manager, region);
+}
+
+- (void)recoManager:(RECOBeaconManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(RECOBeaconRegion *)region {
+    
+    NSLog(@"AppDelegate >> did exit region [manager: %@, beacons: %@, region: %@]", manager, beacons, region);
 }
 
 @end
