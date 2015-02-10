@@ -21,7 +21,7 @@
     beaconManager = [[RECOBeaconManager alloc] init];
     [beaconManager setDelegate:self];
     
-    NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];
+    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"24DDF411-8CF1-440C-87CD-E368DAF9C93E"];
     RECOBeaconRegion *beaconReagion = [self getBeaconReginWithUUID:uuid andIdentifier:@"Jeremy"];
     // RECOBeaconManager를 사용해 등록
     
@@ -88,7 +88,12 @@
 
 - (void)recoManager:(RECOBeaconManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(RECOBeaconRegion *)region {
     
-    NSLog(@"AppDelegate >> did exit region [manager: %@, beacons: %@, region: %@]", manager, beacons, region);
+    NSLog(@"AppDelegate >> did range beacons in region");
+    NSLog(@"AppDelegate >> manager [%@]", [manager description]);
+    for (RECOBeacon *beacon in beacons) {
+        NSLog(@"AppDelegate >> beacons [proximityUUID: %@, description: %@]", [beacon proximityUUID], [beacon description]);
+    }
+    NSLog(@"AppDelegate >> region [%@]", [region description]);
 }
 
 @end
