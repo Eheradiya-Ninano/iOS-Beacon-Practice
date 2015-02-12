@@ -41,8 +41,6 @@
     [beaconManager requestAlwaysAuthorization];
 #endif
     
-    
-    
     return YES;
 }
 
@@ -69,6 +67,8 @@
 }
 
 - (void)startBackgroundMornitoring {
+
+    NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start mornitoring <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
     for (RECOBeaconRegion *beaconRegion in regionsList) {
         [beaconManager startMonitoringForRegion:beaconRegion];
         [beaconManager startRangingBeaconsInRegion:beaconRegion];
@@ -76,6 +76,8 @@
 }
 
 - (void)stopBackgroundMornitoring {
+    
+    NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>> Stop mornitoring <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
     NSSet *monitoredRegions = [beaconManager getMonitoredRegions];
     for (RECOBeaconRegion *beaconRegion in monitoredRegions) {
         [beaconManager stopMonitoringForRegion:beaconRegion];
