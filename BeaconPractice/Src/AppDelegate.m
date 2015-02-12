@@ -21,16 +21,27 @@
     beaconManager = [[RECOBeaconManager alloc] init];
     [beaconManager setDelegate:self];
     
-    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"24DDF411-8CF1-440C-87CD-E368DAF9C93E"];
-    RECOBeaconRegion *beaconReagion = [self getBeaconReginWithUUID:uuid andIdentifier:@"Jeremy"];
-    // RECOBeaconManager를 사용해 등록
+    regionsList = [[NSMutableArray alloc] init];
+    
+//    b0c1861c-b275-11e4-a71e-12e3f512a338  Beacon_Pink
+//    b0c188ce-b275-11e4-a71e-12e3f512a338  Beacon_Orange
+//    b0c18a18-b275-11e4-a71e-12e3f512a338  Beacon_Green
+    NSMutableArray *uuidList = [[NSMutableArray alloc] initWithArray:@[
+                                                          [[NSUUID alloc] initWithUUIDString:@"b0c1861c-b275-11e4-a71e-12e3f512a338"],
+                                                          [[NSUUID alloc] initWithUUIDString:@"b0c188ce-b275-11e4-a71e-12e3f512a338"],
+                                                          [[NSUUID alloc] initWithUUIDString:@"b0c18a18-b275-11e4-a71e-12e3f512a338"]
+                                                          ]];
+    
+    for (int i = 0; i < uuidList.count; i++) {
+        NSString *identifier = [[NSString alloc] initWithFormat:@"BEACON_IDENTIFIER_JEREMY_%d", i];
+        [self registerBeaconRegionWithUUID:[uuidList objectAtIndex:i] andIdentifier:identifier];
+    }
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
     [beaconManager requestAlwaysAuthorization];
 #endif
     
-    [beaconManager startMonitoringForRegion:beaconReagion];
-    [beaconManager startRangingBeaconsInRegion:beaconReagion];
+    
     
     return YES;
 }
@@ -57,6 +68,31 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)startBackgroundMornitoring {
+    for (RECOBeaconRegion *beaconRegion in regionsList) {
+        [beaconManager startMonitoringForRegion:beaconRegion];
+        [beaconManager startRangingBeaconsInRegion:beaconRegion];
+    }
+}
+
+- (void)stopBackgroundMornitoring {
+    NSSet *monitoredRegions = [beaconManager getMonitoredRegions];
+    for (RECOBeaconRegion *beaconRegion in monitoredRegions) {
+        [beaconManager stopMonitoringForRegion:beaconRegion];
+        [beaconManager stopRangingBeaconsInRegion:beaconRegion];
+    }
+}
+
+- (void)registerBeaconRegionWithUUID:(NSUUID *)proximityUUID andIdentifier:(NSString*)identifier {
+    
+    RECOBeaconRegion *recoRegion = [self getBeaconReginWithUUID:proximityUUID andIdentifier:identifier];
+    
+    [recoRegion setNotifyOnEntry:YES];
+    [recoRegion setNotifyOnExit:YES];
+    
+    [regionsList addObject:recoRegion];
+}
+
 - (RECOBeaconRegion *)getBeaconReginWithUUID:(NSUUID *)proximityUUID
                       andIdentifier:(NSString *)identifier {
     
@@ -73,7 +109,7 @@
 
 - (void)recoManager:(RECOBeaconManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
-    NSLog(@"AppDelegate >> did change authorization status [status: %d", status);
+    NSLog(@"AppDelegate >> did change authorization status [status: %d]", status);
 }
 
 - (void)recoManager:(RECOBeaconManager *)manager didEnterRegion:(RECOBeaconRegion *)region {

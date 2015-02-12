@@ -10,6 +10,11 @@
 
 @interface ViewController : UIViewController
 
+@property(strong, nonatomic) IBOutlet UIButton *buttonServiceStart;
+@property(strong, nonatomic) IBOutlet UIButton *buttonServiceStop;
+
+- (IBAction)clickedServiceStartButton:(id)sender;
+- (IBAction)clickedServiceStopButton:(id)sender;
 
 @end
 

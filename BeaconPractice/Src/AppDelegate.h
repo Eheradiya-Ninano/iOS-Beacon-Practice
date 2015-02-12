@@ -12,10 +12,13 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate, RECOBeaconManagerDelegate> {
     
     RECOBeaconManager *beaconManager;
+    NSMutableArray *regionsList;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 
-
+- (void)startBackgroundMornitoring;
+- (void)stopBackgroundMornitoring;
+    
 @end
 
