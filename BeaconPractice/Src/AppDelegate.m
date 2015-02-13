@@ -14,6 +14,8 @@
 
 @implementation AppDelegate
 
+@synthesize beaconDelegate;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -66,9 +68,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)startBackgroundMornitoring {
+- (void)startBackgroundMornitoring:(id<BeaconDelegate>) _beaconDelegate {
 
     NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start mornitoring <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+    
+    self.beaconDelegate = _beaconDelegate;
+    
     for (RECOBeaconRegion *beaconRegion in regionsList) {
         [beaconManager startMonitoringForRegion:beaconRegion];
         [beaconManager startRangingBeaconsInRegion:beaconRegion];
@@ -83,6 +88,8 @@
         [beaconManager stopMonitoringForRegion:beaconRegion];
         [beaconManager stopRangingBeaconsInRegion:beaconRegion];
     }
+    
+    self.beaconDelegate = nil;
 }
 
 - (void)registerBeaconRegionWithUUID:(NSUUID *)proximityUUID andIdentifier:(NSString*)identifier {
@@ -117,11 +124,13 @@
 - (void)recoManager:(RECOBeaconManager *)manager didEnterRegion:(RECOBeaconRegion *)region {
     
     NSLog(@"AppDelegate >> did enter region [manager: %@, region: %@]", manager, region);
+    [self.beaconDelegate enterBeaconRegion:[[region proximityUUID] UUIDString]];
 }
 
 - (void)recoManager:(RECOBeaconManager *)manager didExitRegion:(RECOBeaconRegion *)region {
 
     NSLog(@"AppDelegate >> did exit region [manager: %@, region: %@]", manager, region);
+    [self.beaconDelegate exitBeaconRegion:[[region proximityUUID] UUIDString]];
 }
 
 - (void)recoManager:(RECOBeaconManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(RECOBeaconRegion *)region {

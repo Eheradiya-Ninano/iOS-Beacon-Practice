@@ -37,6 +37,27 @@
                                     <action selector="clickedServiceStopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gyH-3I-WaN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Orange Beacon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bz-oT-E1H">
+                                <rect key="frame" x="16" y="215" width="382" height="33"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Green Beacon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nM5-Vr-JGJ">
+                                <rect key="frame" x="16" y="256" width="382" height="33"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pink Beacon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yc-PJ-Nvk">
+                                <rect key="frame" x="16" y="297" width="382" height="33"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -44,11 +65,14 @@
                     <connections>
                         <outlet property="buttonServiceStart" destination="M9o-2G-z9f" id="b4D-V7-J0J"/>
                         <outlet property="buttonServiceStop" destination="lcM-Ck-AkI" id="RCg-Qb-LcV"/>
+                        <outlet property="labelGreenBeacon" destination="nM5-Vr-JGJ" id="KhI-Id-9al"/>
+                        <outlet property="labelOrangeBeacon" destination="9Bz-oT-E1H" id="fSC-9K-Ixc"/>
+                        <outlet property="labelPinkBeacon" destination="7Yc-PJ-Nvk" id="Xic-ot-L0X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="434" y="312"/>
+            <point key="canvasLocation" x="102" y="336"/>
         </scene>
     </scenes>
 </document>
